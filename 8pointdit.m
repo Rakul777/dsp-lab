@@ -1,0 +1,16 @@
+x = [1, 2, 3, 4, 5, 6, 7, 8];
+N = 8; 
+X = fft(x, N);
+disp('The 8-point DFT is:');
+disp(X);
+t = 0:N-1; 
+subplot(2,1,1);
+stem(t, abs(X));
+title('Magnitude Response');
+xlabel('Frequency Bin (k)');
+ylabel('|X(k)|');
+subplot(2,1,2);
+stem(t, angle(X));
+title('Phase Response');
+xlabel('Frequency Bin (k)');
+ylabel('Phase (radians)'); 
