@@ -1,0 +1,11 @@
+clc;
+clear all;
+close all;
+n=0:1:999;
+fs=300;
+x=cos(2*pi*n*325/fs)+cos(2*pi*n*125/fs);
+X=fftshift(fft(x));
+plot(x(1:50));
+xaxis=linspace(-fs/2,fs/2,1000);
+figure;
+plot(xaxis,abs(X));

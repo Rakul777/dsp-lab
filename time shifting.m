@@ -1,0 +1,15 @@
+clc;
+clear all;
+close all;
+f=300;
+fs=10*f;
+N=1000;
+n=0:1:N-1;
+k=0:1:N-1;
+x=cos(2*pi*f*n/fs);
+X=fft(x);
+x1=ifft(exp(1i*2*pi*5*k/N).*X);
+figure;
+plot(real(x1(1:50)));
+figure;
+plot(real(x(1:50)));

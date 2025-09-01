@@ -1,0 +1,17 @@
+clc;
+clear all;
+close all;
+N=1000;
+f=300;
+fs=10*f;
+n=0:1:N-1;
+x=cos(2*pi*n*f/fs);
+X=fftshift(fft(x));
+n=n+5;
+xshift=cos(2*pi*n*f/fs);
+Xshift=fftshift(fft(xshift));
+xaxis=linspace(-fs/2,fs/2,1000);
+figure;
+plot(xaxis,angle(x).*double(abs(x)>0.1));
+figure;
+plot(xaxis,angle(xshift).*double(abs(xshift)>0.1));

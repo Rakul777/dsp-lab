@@ -1,0 +1,25 @@
+ap=3;
+as=20;
+fp=[300 500];
+fst=[200 600];
+fs=10*600;
+Wp=2*fp/fs;
+Ws=2*fst/fs;
+[n,Wc]=buttord(Wp,Ws,ap,as);
+[Num den]=butter(n,Wc,"bandpass");
+h=freqz(Num,den,fs);
+xaxis=linspace(0,fs/2,length(h));
+plot(xaxis,abs(h))
+n=0:1:200;
+x=cos(2*pi*50*n/fs)+cos(2*pi*400*n/fs)+cos(2*pi*900*n/fs);
+y=filter(num,den,x);
+X=fftshift(fft(x));
+Y=fftshift(fft(y));
+xaxis=linspace(-fs/2,fs/2,length(x));
+plot(xaxis,abs(X));
+figure;
+plot(xaxis,abs(Y));
+figure;
+plot(x(101:140));
+figure;
+plot(y(101:140));
