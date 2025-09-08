@@ -1,0 +1,18 @@
+clc;
+clear al1;
+close all;
+M=3;
+n=0:1;100;
+x=cos(pi*n/3);                                        
+xdown=x(1:M:end);
+h=fir1(101,1/M,hamming(102));
+x_lpf=filter(h,1,x);
+x_antialai=x_lpf(51:end-50);
+x_deci=x_antialai(1:M:end);
+X_f=fftshift(fft(x));
+Xlpf_f=fftshift(fft(x_antialai));
+Xdeci_f=fftshift(fft(x_deci));     
+xaxis=linspace(-1/2,1/2,100);
+plot(xaxis,abs(X_f));
+figure;
+plot(xaxis,abs(Xdeci_f));
